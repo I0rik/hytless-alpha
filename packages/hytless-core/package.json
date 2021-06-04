@@ -1,0 +1,23 @@
+{
+  "name": "@hytless/core",
+  "version": "0.0.1",
+  "description": "proof of concept - web freimwork without hypertext",
+  "main": "index.js",
+  "author": "i0rik",
+  "license": "none",
+  "private": false,
+  "scripts": {
+    "build": "yarn clean && webpack",
+    "clean": "yarn rimraf ./dist",
+    "serve": "yarn clean && webpack --watch --progress --hot --open --mode=development"
+  },
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "source-map-loader": "^3.0.0",
+    "ts-loader": "^9.2.2",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
