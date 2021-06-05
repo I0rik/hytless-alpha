@@ -26,7 +26,10 @@ module.exports = {
   },
   devServer: {
     port: 4200,
-    contentBase: path.join(__dirname, './dist'),
+    contentBase: [
+      path.join(__dirname, './dist'),
+      path.join(__dirname, './src/assets'),
+    ],
     index: 'index.html',
     watchContentBase: true,
     hot: true

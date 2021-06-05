@@ -1,3 +1,5 @@
+import { NewNodeDefinitions } from './domHelpers.models';
+
 export interface Component {
   name: string;
   $el: HTMLElement | null;
@@ -23,9 +25,10 @@ export interface InitApp {
  */
 export interface ComponentData {
   name: string;
-  options: () => Object;
-  data: Object;
-  methods: { [key: string]: () => any };
-  handlers:() => { [key: string]: () => void };
-  components?: Array<ComponentData>;
+  options?: () => Object;
+  props?: Array<any>;
+  data?: Object;
+  methods?: { [key: string]: () => any };
+  handlers?:() => { [key: string]: () => void };
+  children?: Array<ComponentData | NewNodeDefinitions>;
 }

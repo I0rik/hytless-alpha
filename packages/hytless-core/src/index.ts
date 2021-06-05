@@ -13,7 +13,6 @@ export function initApp(rootComponent: InitApp) {
         rootComponent.handlers,
         rootComponent.components
       )
-
       return app;
     }
   };

@@ -1,4 +1,4 @@
-import { createNode, mountComponent, replaceElement } from './helpers/domHelpers';
+import { createNode, mountNode, replaceElement } from './helpers/domHelpers';
 import { Component, ComponentData } from './models/component.models';
 import { observe } from './helpers/reactivity';
 
@@ -27,7 +27,7 @@ export function createRoot(
     $render: null,
     $reactProxy: null
   };
-  component.$render = createNode.bind(component, 'div', options);
+  component.$render = createNode.bind(component, { tag: 'div', props: options });
   component.$reactProxy = reRender.bind(component, handlers);
   if (data) {
     component.data = observe.call(component, data);
@@ -36,7 +36,7 @@ export function createRoot(
     applyMethods(component, methods);
   }
   component.$el = component.$render();
-  mountComponent(mountSelector, component.$el);
+  mountNode(mountSelector, component.$el);
   components.forEach(child => {
     createComponent(child, component)
   })
@@ -51,13 +51,13 @@ function createComponent(data: ComponentData, parent: Component) {
     $render: null,
     $reactProxy: null
   };
-  component.$render = createNode.bind(component, 'div', data.options);
+  component.$render = createNode.bind(component, { tag: 'div', props: data.options, children: data.children });
   component.$reactProxy = reRender.bind(component, data.handlers);
   component.data = observe.call(component, data.data);
   applyMethods(component, data.methods);
   component.$el = component.$render();
   applyHandlers(component, data.handlers);
-  mountComponent(parent.$el, component.$el);
+  mountNode(parent.$el, component.$el);
   return component;
 }
 

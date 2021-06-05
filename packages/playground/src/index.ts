@@ -1,10 +1,12 @@
 import { initApp } from '@hytless/core/src/index';
-import { counter } from './components/counter'
+import { counter } from './components/counter';
 
-const hytlessApp = initApp({
+const hytlessApp = {
   name: 'app',
   mountSelector: '#app',
   components: [
     counter
   ]
-});
+}
+
+initApp(hytlessApp);

@@ -11,19 +11,7 @@ import { ComponentData } from '../models/component.models';
  * @returns 
  */
 export function createHytless (
-  name: string,
-  options: () => Object,
-  data: Object,
-  methods: { [key: string]: () => any },
-  handlers:() => { [key: string]: () => void },
-  components?: Array<ComponentData>,
+  data: ComponentData
 ): ComponentData {
-  return {
-    name,
-    options,
-    data,
-    methods,
-    handlers,
-    components
-  }
+  return data;
 }
